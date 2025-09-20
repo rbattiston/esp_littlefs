@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.10)
 
-file(GLOB SOURCES src/littlefs/*.c)
-list(APPEND SOURCES src/esp_littlefs.c src/littlefs_esp_part.c src/lfs_config.c)
+set(LFS_SRC
+    src/littlefs/lfs.c
+    src/littlefs/lfs_util.c
+)
+
+list(APPEND SOURCES ${LFS_SRC} src/esp_littlefs.c src/littlefs_esp_part.c src/lfs_config.c)
 
 if(IDF_TARGET STREQUAL "esp8266")
     # ESP8266 configuration here
